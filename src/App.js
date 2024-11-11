@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { createContext, useState } from "react";
 import Cart from "./pages/Cart";
 import Header from "./components/Header";
