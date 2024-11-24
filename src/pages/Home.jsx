@@ -17,7 +17,6 @@ const Home = () => {
   const { searchValue } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [currentPage, setCurrentPage] = useState(1);
 
   const onClickCategory = (id) => {
     dispatch(setCategoryId(id));
