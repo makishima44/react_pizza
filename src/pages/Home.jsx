@@ -11,12 +11,10 @@ import { setCategoryId, setCurrentPage } from "../redux/slices/filterSlice";
 import { setItems, fetchPizzas } from "../redux/slices/pizzaSlice";
 
 const Home = () => {
+  const { searchValue } = useContext(SearchContext);
   const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
   const { items, status } = useSelector((state) => state.pizza);
   const dispatch = useDispatch();
-
-  const { searchValue } = useContext(SearchContext);
-  // const [isLoading, setIsLoading] = useState(true);
 
   const onClickCategory = (id) => {
     dispatch(setCategoryId(id));
