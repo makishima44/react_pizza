@@ -34,6 +34,8 @@ const cartSlice = createSlice({
       if (findItem) {
         findItem.count--;
       }
+
+      state.totalPrice -= findItem.price;
     },
 
     removeItem(state, action) {
@@ -44,7 +46,7 @@ const cartSlice = createSlice({
       }, 0);
     },
 
-    clearItems(state, action) {
+    clearItems(state) {
       state.items = [];
       state.totalPrice = 0;
     },

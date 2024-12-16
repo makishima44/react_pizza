@@ -10,17 +10,17 @@ import { selectFilter, setCategoryId, setCurrentPage } from "../redux/slices/fil
 import { fetchPizzas, selectPizzaData } from "../redux/slices/pizzaSlice";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home: React.FC = () => {
   const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
   const dispatch = useDispatch();
 
-  const onClickCategory = (id) => {
-    dispatch(setCategoryId(id));
+  const onClickCategory = (idx: number) => {
+    dispatch(setCategoryId(idx));
   };
 
-  const onChangePage = (number) => {
-    dispatch(setCurrentPage(number));
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page));
   };
 
   const getPizzas = async () => {
@@ -30,6 +30,7 @@ const Home = () => {
     const search = searchValue ? `&search=${searchValue}` : "";
 
     dispatch(
+      //@ts-ignore
       fetchPizzas({
         order,
         sortBy,
@@ -46,15 +47,15 @@ const Home = () => {
     getPizzas();
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-  const pizzas = items.map((obj) => (
-    <Link key={obj.id} to={`/pizza/${obj.id}`}>
-      <PizzaBlock {...obj} />
-    </Link>
+  const pizzas = items.map((obj: any) => (
+    // <Link key={obj.id} to={`/pizza/${obj.id}`}>
+    <PizzaBlock {...obj} />
+    // </Link>
   ));
   const skeletons = [...new Array(6)].map((_, index) => <PizzaSkeleton key={index} />);
 
   return (
-    <div div className="container">
+    <div className="container">
       <div className="content__top">
         <Categories value={categoryId} onClickCategory={(id) => onClickCategory(id)} />
         <Sort />
