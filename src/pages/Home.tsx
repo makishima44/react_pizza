@@ -15,8 +15,8 @@ const Home: React.FC = () => {
   const { items, status } = useSelector(selectPizzaData);
   const dispatch = useDispatch();
 
-  const onClickCategory = (idx: number) => {
-    dispatch(setCategoryId(idx));
+  const onClickCategory = (index: number) => {
+    dispatch(setCategoryId(index));
   };
 
   const onChangePage = (page: number) => {
@@ -57,7 +57,7 @@ const Home: React.FC = () => {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories value={categoryId} onClickCategory={(id) => onClickCategory(id)} />
+        <Categories value={categoryId} onClickCategory={(index) => onClickCategory(index)} />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>

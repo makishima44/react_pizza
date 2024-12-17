@@ -1,7 +1,7 @@
 import find from "../../assets/img/find.svg";
 import close from "../../assets/img/close.svg";
 import debounce from "lodash.debounce";
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchvalue } from "../../redux/slices/filterSlice";
 
@@ -25,7 +25,7 @@ const Search: React.FC = () => {
     []
   );
 
-  const onChangeInput = (event: any) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
   };
