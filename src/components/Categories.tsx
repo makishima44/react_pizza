@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 type CategoriesTypeProps = {
   value: number;
@@ -7,7 +7,7 @@ type CategoriesTypeProps = {
 
 const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
 
-const Categories: React.FC<CategoriesTypeProps> = ({ value, onClickCategory }) => {
+const Categories: React.FC<CategoriesTypeProps> = memo(({ value, onClickCategory }) => {
   return (
     <div className="categories">
       <ul>
@@ -19,6 +19,6 @@ const Categories: React.FC<CategoriesTypeProps> = ({ value, onClickCategory }) =
       </ul>
     </div>
   );
-};
+});
 
 export default Categories;

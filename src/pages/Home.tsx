@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectFilter, setCategoryId, setCurrentPage } from "../redux/slices/filterSlice";
 import { fetchPizzas, selectPizzaData } from "../redux/slices/pizzaSlice";
@@ -15,9 +15,9 @@ const Home: React.FC = () => {
   const { items, status } = useSelector(selectPizzaData);
   const dispatch = useAppDispatch();
 
-  const onClickCategory = (index: number) => {
+  const onClickCategory = useCallback((index: number) => {
     dispatch(setCategoryId(index));
-  };
+  }, []);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -52,8 +52,8 @@ const Home: React.FC = () => {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories value={categoryId} onClickCategory={(index) => onClickCategory(index)} />
-        <Sort />
+        <Categories value={categoryId} onClickCategory={onClickCategory} />
+        <Sort value={sort} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
 
