@@ -3,9 +3,9 @@ import close from "../../assets/img/close.svg";
 import debounce from "lodash.debounce";
 import React, { useCallback, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchvalue } from "../../redux/slices/filterSlice";
 
 import styles from "./Search.module.scss";
+import { setSearchvalue } from "../../redux/filter/filterSlice";
 
 const Search: React.FC = () => {
   const dispatch = useDispatch();
