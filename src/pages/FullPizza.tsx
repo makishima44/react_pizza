@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const FullPizza: React.FC = () => {
   const [pizza, setPizza] = useState<{
@@ -30,10 +30,15 @@ const FullPizza: React.FC = () => {
     return "Loading";
   }
   return (
-    <div>
-      <img src={pizza.imageUrl} alt="" />
+    <div className="fullPizza">
+      <img src={pizza.imageUrl} alt="" style={{ height: "500px" }} />
       <h2>{pizza.title}</h2>
-      <h4>{pizza.price}</h4>
+      <h4>Цена:{pizza.price}</h4>
+      <Link to={"/"}>
+        <button className="button button--outline button--add">
+          <span>Назад</span>
+        </button>
+      </Link>
     </div>
   );
 };
