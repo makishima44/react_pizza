@@ -12,28 +12,16 @@ const FullPizza = lazy(() => import(/*webpackChunkName: "FullPizza" */ "./pages/
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route path="" element={<Home />} />
-        <Route
-          path="cart"
-          element={
-            <Suspense fallback={<div>Идет загрузка корзины...</div>}>
-              <Cart />
-            </Suspense>
-          }
-        />
-        <Route
-          path="pizza/:id"
-          element={
-            <Suspense fallback={<div>Идет загрузка ...</div>}>
-              <FullPizza />
-            </Suspense>
-          }
-        />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<div>Идет загрузка...</div>}>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="" element={<Home />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="pizza/:id" element={<FullPizza />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
